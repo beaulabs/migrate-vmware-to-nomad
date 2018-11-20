@@ -45,6 +45,15 @@
       ]
       ]
 
+      ???
+      What is a workload scheduler?  In many environments this is your system administrator.  When an application team wants to deploy code, they need compute, network and storage resources to run on.  This is where the operations team comes in.  You're probably familiar with the age old story - someone submits a ticket, then the ticket goes thorugh several stages of approvals and like a pinball machine, the request bounces around until all the right pieces are in place.  The app is deployed onto the servers and left running.  Until the next maintnenace window.  Or patch.  Or upgrade.  Or bug fix.  
+
+      Human powered workload scheduling is inefficient.  Nowadays there are modern workload schedulers that can run microservices inside of containers.  These are fine if you're able to completely rewrite your applications to run inside of small docker containers.
+
+      This isn't always possible or practical.  I managed a vSphere cluster once upon a time.  It was a hodge-podge janky setup, with three generations of server hardware, two SANs and a pair of load balancers in front of the whole setup.  The cluster had six hosts in it, and the hosts had different CPUs and amounts of memory.  So when a new customer would come on board, my team had to figure out where to put them in this environment.  We spent a lot of time optimizing what went where.  
+
+      Nomad automates all of this for you.  Instead of having humans try to solve the age-old "bin packing" problem, we let the computers do it for us.  Now we can create a giant pool of compute, network and storage, and allow Nomad to place workloads wherever it is most efficient.
+
       ---
       name: What-is-HashiCorp-Nomad
       <br>
@@ -56,6 +65,9 @@
       * Supports containers or traditional VMs
       ]
       ]
+
+      ???
+      Unlike the other popular workload schedulers on the market, Nomad supports both containerized workloads and traditional virtual machines.  Today we're going to show you how you can take an unmodified VMware image out of your datastore, and run it in a KVM hypervisor in a Nomad cluster.
 
       ---
       name: What-is-HashiCorp-Nomad
@@ -69,6 +81,9 @@
       * Uses simple job config files
       ]
       ]
+
+      ???
+      Nomad is really easy to work with. You compose a simple config file using the HashiCorp Config Language, or HCL for short, and submit your job to the Nomad server.  Nomad reads your job file and takes care of running your container, virtual machine, or application somewhere on the cluster of resources.
 
       ---
       name: What-is-HashiCorp-Nomad
@@ -83,6 +98,9 @@
       * Automatic & efficient workload placement
       ]
       ]
+
+      ???
+      One of the great features of Nomad is that I no longer need to worry about where my workloads are being placed.  Nomad is intelligent enough to know how much memory, disk, and CPU are available on different hosts, and it's also intelligent enough to spread similar machines across different hosts to ensure maximum high availability for your apps.
 
       ---
       name: What-is-HashiCorp-Nomad
@@ -98,6 +116,9 @@
       * Supports rolling deployments
       ]
       ]
+
+      ???
+      Nomad supports rolling deployments and upgrades.  This means that I can upgrade a few machines at a time, in a rolling fashion, across my entire fleet of apps and infrastructure.  This ensures safe and reliable patches and upgrades, and reduces the risk of downtime.
 
       ---
       name: What-is-HashiCorp-Nomad
@@ -114,6 +135,9 @@
       * Canary or blue/green deployments
       ]
       ]
+
+      ???
+      Nomad also supports so-called "canary" deployments.  Maybe you want to test a new setting or upgrade on a small number of machines.  With the canary or blue/green deployment strategy you can stand up an entirely new set of infrastructure, test it thoroughly and then roll onto the new version.  This ensures a safe rollback in case anything goes wrong.  
 
       ---
       name: What-is-HashiCorp-Nomad
@@ -131,6 +155,9 @@
       * Automated failure recovery
       ]
       ]
+
+      ???
+      Nomad can automatically redeploy your apps and servers onto other hosts if one of your nodes becomes unhealthy.  If you run out of capacity you can simply add more machines to the cluster.  And conversely, if you aren't using all your hosts you can shut some of them down to save money.
 
       ---
       name: Why-Nomad?
@@ -152,6 +179,9 @@
       * Save money - Nomad is OSS
       ]
 
+      ???
+      Speaking of saving money, Nomad is free and open source software.  Everything I'm going to show you in the demo today can be done with our OSS stack.  Of course, there is an enterprise version of Nomad which adds some extra features around governance and collaboration.  If you just want a simple hypervisor to run your virtual workloads on, Nomad could be a great solution!
+
       ---
       name: Why-Nomad?
       Why Nomad?
@@ -163,6 +193,9 @@
       * Save money - Nomad is OSS
       * Need to support mixed environments
       ]
+
+      ???
+      
 
       ---
       name: Why-Nomad?
@@ -248,7 +281,7 @@
       .center[
       ![:scale 30%](images/bad_tetris.gif)
       ]
-      
+
       ---
       name: Live-Demo
       class: center,middle
