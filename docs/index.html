@@ -195,7 +195,7 @@
       ]
 
       ???
-      
+      Perhaps you're in the middle of a cloud migration project. Some of your workloads are running in AWS, Azure or Google Cloud but you also have a bunch of VMware machines. You can actually build compute clusters in each environment, or even span them across datacenters and clouds.
 
       ---
       name: Why-Nomad?
@@ -209,6 +209,9 @@
       * Need to support mixed environments
       * Move legacy applications to cloud
       ]
+
+      ???
+      You might have legacy applications running inside VMware that are never going to be rewritten. Wouldn't it be nice if we could just move the entire thing on to an automated workload scheduler, and not have to manage those apps manually?  Nomad lets you put a wrapper around your legacy VMs, so you can treat them like modern containers.
 
       ---
       name: Why-Nomad?
@@ -223,6 +226,9 @@
       * Move legacy applications to cloud
       * Get maximum efficiency from hardware
       ]
+
+      ???
+      You might have a bunch of hardware that you've already paid for.  You'd like to make sure you're making the most efficient use of the hardware possible.  Nomad is expert at 'bin packing', or stacking different types of resources and workloads in the most efficient manner.
 
       ---
       name: Why-Nomad?
@@ -238,6 +244,9 @@
       * Get maximum efficiency from hardware
       * Automated machine placement
       ]
+
+      ???
+      I no longer have to worry about where my workloads are being placed.  Nomad does it all for me, then optionally registers any new services in the Consul service registry.  These services can easily be placed behind a load balancer or monitored with health checks.
 
       ---
       name: Why-Nomad?
@@ -255,6 +264,9 @@
       * Enable self-service provisioning
       ]
 
+      ???
+      Users no longer have to play support ticket ping pong to get their infrastructure provisioned.  They simply submit a job file, and upon approval the job is executed and the infrastructure gets built.  This can greatly reduce the amount of time and effort wasted trying to get approvals and build network configs and firewall rules.
+
       ---
       name: Nomad-Architecture
       Nomad Architecture
@@ -267,11 +279,19 @@
       * Nomad forms a cluster of compute resources
       * Start running workloads!
       ]
+
+      ???
+      Getting started with Nomad is really easy. Nomad ships as a single binary file, written in Go.  The binary accepts a config file that tells it whether to act as a client or server.  Servers are the brains of the operation, and they determine how to place workloads.  Clients are the worker bees, the accept workloads on behalf of the servers.
       
       ---
       name: Bin-Packing
       What is Bin Packing?
       -------------------------
+
+      ???
+      What's this term "bin packing" all about?  It's actually a math problem.  Imagine you have a giant crate, and inside that crate you need to stack a bunch of differently-sized and shaped containers.  The goal here is to fill the maximum amount of space inside the crate by optimizing where you place all the blocks.
+
+      If you want to try a bin packing experiment on your own at home, try doing the dishes together with your spouse or significant other.  Hopefully this doesn't end in a fight over the right system to load the dishes.  
 
       ---
       name: Bin-Packing
@@ -282,11 +302,17 @@
       ![:scale 30%](images/bad_tetris.gif)
       ]
 
+      ???
+      This is what happens when you leave the bin packing job to the humans.  We make mistakes, we rush, we misjudge things, and the bin gets packed a bit sloppy.  Better to leave this type of work for the computers, which are much more efficient.
+
       ---
       name: Live-Demo
       class: center,middle
       Live Demo
       =========================
+
+      ???
+      Let's walk through a live demo and I'll show you how to export a VMware virtual machine into a Nomad artifact that you can run via dynamic jobs.
 
       ---
       name: More-Info
